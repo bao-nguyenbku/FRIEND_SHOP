@@ -10,6 +10,17 @@
         });
     });
 </script>
+<script>
+        
+        function testSth(ele)
+        {
+            var globalID;
+            globalID = ele.id;
+            
+            document.cookie="cname="+globalID;
+        }
+           
+</script>      
 </body>
 
 </html>
