@@ -10,9 +10,9 @@ $id = $_GET['rn'];
 $sql = "DELETE FROM `product` WHERE `id`='$id'";
 $res = mysqli_query($connect, $sql);
 if ($res){
-    echo 'Đã xóa thành công sản phẩm';
+    echo "<script type='text/javascript'>alert('Xóa sản phẩm $id thành công');</script>";
 } else {
-    echo 'failed';
+    echo "<script type='text/javascript'>alert('Xóa sản phẩm $id thất bại');</script>";
 }
 $connect->close();
 ?>

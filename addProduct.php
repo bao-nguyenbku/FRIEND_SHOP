@@ -23,7 +23,20 @@
         {
             echo "<script type='text/javascript'>alert('Đã thêm thành công $name');</script>";;
         } else {
-            echo 'failed';
+            // echo "<script type='text/javascript'>alert('Thêm $name không thành công');</script>";
+           if (mysqli_errno($connect) == 1062)
+           {
+                echo "<script type='text/javascript'>alert('ID sản phẩm đã tồn tại');</script>";;
+           }
+           else  if (($connect->sqlstate) == 50001)
+           {
+               echo "<script type='text/javascript'>alert('Giá sản phẩm phải lớn hơn 0 và bé hơn 100 000 000');</script>";
+               
+           }
+           else 
+           {
+               echo "<script type='text/javascript'>alert('Thêm $name không thành công');</script>";
+           }
         }
         $connect->close();
     }
