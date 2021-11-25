@@ -20,19 +20,17 @@
         if(mysqli_connect_errno()) {
             die ("Database Connection Failed, ".$mysql_connect_error()." (". $mysql_connect_errno()." )");
         }
-
-        $id = $_POST['id'];
        
 
         // $query = "UPDATE `members` SET `name`='$_POST[name]', `email`='$_POST[mail]',`password`='$_POST[password]', `dob`='$_POST[dob]' ,`gender`='$_POST[gender]',`phone`='$_POST[phone]',`avatar`='$_POST[avatar]' WHERE `username` = $_POST[username]";
         $query = "UPDATE `product` SET `price` = '$_POST[price]', `specs`='$_POST[specs]',  `name`='$_POST[name]', `category`='$_POST[category]' WHERE `id` = '$_POST[id]'";
         $result = mysqli_query($connect, $query);
-
+        $name = $_POST['name'];
         if ($result)
         {
-            echo $id;
+            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công $name');</script>";
         } else {
-            echo 'failed';
+            echo "<script type='text/javascript'>alert('Chỉnh sửa $name thất bại');</script>";
         }
         $connect->close();
     }
@@ -76,7 +74,7 @@
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="name">ID</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="id" id="username" placeholder="" required value="<?php echo $data['id'] ?>">
+                                    <input type="text" readonly class="form-control" name="id" id="username" placeholder="" required value="<?php echo $data['id'] ?> ">
                                     <div class="invalid-feedback">
                                         ID không hợp lệ!
                                     </div>
@@ -105,7 +103,7 @@
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" name="price"  id="name" placeholder="" required  value="<?php echo $data['price'] ?>">
                                     <div class="invalid-feedback">
-                                        Giá sản phẩm
+                                        Giá sản phẩm không hợp lệ!
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +114,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="specs"  id="phone" placeholder="" required  value="<?php echo $data['specs'] ?>">
                                     <div class="invalid-feedback">
-                                        Mô tả không hợp lệ
+                                        Mô tả không hợp lệ!
                                     </div>
                                 </div>
                             </div>

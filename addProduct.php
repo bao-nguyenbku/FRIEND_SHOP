@@ -21,7 +21,7 @@
 
         if ($result)
         {
-            echo "<script type='text/javascript'>alert('Đã thêm thành công $name');</script>";;
+            echo "<script type='text/javascript'>alert('Đã thêm thành công $name');</script>";
         } else {
             // echo "<script type='text/javascript'>alert('Thêm $name không thành công');</script>";
            if (mysqli_errno($connect) == 1062)

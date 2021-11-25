@@ -30,7 +30,7 @@
         <?php 
             if (!isset($getCate)){$getCate= '';}
 
-            if ($getCate != '') 
+            if ($getCate != '' && $getStore !='') 
             {
                 echo "Danh sách <b> $getCate </b> cửa hàng <b> $getStore </b>";
             }

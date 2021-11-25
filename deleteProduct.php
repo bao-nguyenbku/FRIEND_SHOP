@@ -7,7 +7,9 @@ if (mysqli_connect_errno())
 }
 
 $id = $_GET['rn'];
-$sql = "DELETE FROM `product` WHERE `id`='$id'";
+$del_contain = "DELETE FROM `contain` WHERE `product_id`='$id'";
+$del_res = mysqli_query($connect, $del_contain);
+$sql = "DELETE FROM `product` WHERE id='$id'";
 $res = mysqli_query($connect, $sql);
 if ($res){
     echo "<script type='text/javascript'>alert('Xóa sản phẩm $id thành công');</script>";
