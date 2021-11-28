@@ -28,9 +28,9 @@
         $id = $_POST['id'];
         if ($result)
         {
-            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công $id');</script>";
+            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công đơn hàng thứ $id');</script>";
         } else {
-            echo "<script type='text/javascript'>alert('Chỉnh sửa $id thất bại');</script>";
+            echo "<script type='text/javascript'>alert('Chỉnh sửa đơn hàng thứ $id thất bại');</script>";
         }
         $connect->close();
     }
