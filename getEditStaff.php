@@ -21,7 +21,7 @@ if (isset($_GET["id"])) {
 <div class="container">
     <h5 style="text-align: center;">Cập nhật nhân viên</h5>
     <div class="modal-body">
-        <form action="updateStaff.php" method="post" enctype="multipart/form-data" id="">
+        <form action="./updateStaff.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data" id="">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Họ và tên lót</span>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="last_name" value="<?php echo $data[0]['last_name']; ?>" required>
@@ -49,7 +49,7 @@ if (isset($_GET["id"])) {
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Số điện thoại</span>
-                <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="phone" value="<?php echo $data[0]['phone_number']; ?>" required>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="phone" value="<?php echo $data[0]['phone_number']; ?>" required>
             </div>
 
             <div class="input-group mb-3">

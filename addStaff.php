@@ -14,12 +14,17 @@ if (isset($_POST["submit"])) {
         $sex = $_POST["sex"];
         $dob = $_POST["dob"];
         $salary = $_POST["salary"];
-
+        $storeId = $_POST["storeId"];
+        $hours = $_POST["hours"];
         $insert_sql = "CALL insertAccount('$last_name', '$first_name', '$email', '$password', '$sex', '$phone', '$dob', 'sta', $salary)";
         $result = $db->query($insert_sql);
         if ($result) {
-            alert('Đã thêm thành công');
-            header("Location: manageStaff.php");
+            $insert_works_for = "INSERT INTO works_for (staff_id, store_id, work_hours) values ((SELECT max(id) FROM accounts), '$storeId', '$hours');";
+            $res2 = $db->query($insert_works_for);
+            if ($res2) {
+                alert('Đã thêm thành công');
+                header("Location: manageStaff.php");
+            }
         } 
         
         else {
@@ -73,12 +78,22 @@ if (isset($_POST["submit"])) {
                 <span class="input-group-text" id="inputGroup-sizing-default">Ngày tháng năm sinh</span>
                 <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="dob" required>
             </div>
-
+            <div class="input-group mb-3">
+                <select class="form-select" aria-label="Default select example" name="storeId" required>
+                <option value="blank">Nơi làm việc</option>
+                    <option value="1">Cửa hàng 1</option>
+                    <option value="2">Cửa hàng 2</option>
+                    <option value="3">Cửa hàng 3</option>
+                </select>
+            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Lương</span>
                 <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="salary" required>
             </div>
-
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Thời gian làm việc</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="hours" required>
+            </div>
             <div class="modal-footer modal-footer-custom">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Đóng</button>
                 <button type="submit" class="btn btn-success" name="submit">Thêm mới</button>
