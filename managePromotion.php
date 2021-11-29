@@ -32,7 +32,7 @@
 
             if ($getPrice != '' ) 
             {
-                echo "Danh sách các khuyến mãi áp dụng cho đơn hàng có giá trị lớn hơn </b> $getPrice </b>";
+                echo "Danh sách các khuyến mãi áp dụng cho đơn hàng có giá trị lớn hơn </b> $getPrice </b> VND";
             }
             else {
                 echo '';
