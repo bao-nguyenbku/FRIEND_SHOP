@@ -1,14 +1,19 @@
 <?php include "header.php"; ?>
 <?php include "controllers/staffController.php"; ?>
-<?php 
-    function alert ($d) {
-        echo "<script type='text/javascript'>alert('".$d. "');</script>";
+
+<?php
+function alert($d) {
+    echo "<script type='text/javascript'>alert('" . $d . "');</script>";
+}
+$staffByStore = [];
+if (isset($_GET["storeId"])) {
+    $storeId = $_GET['storeId'];
+    if ($storeId != 'all') {
+        $staffByStore = listStaffByStore($storeId);
     }
-    if (isset($_GET["storeId"])) {
-        $storeId = $_GET['storeId'];
-        
-    }
+}
 ?>
+
 <link rel="stylesheet" href="./public/css/staff.css">
 <div class="container">
     <h1 style="text-align: center;">Danh sách nhân viên</h1>
@@ -16,19 +21,19 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Thêm tài khoản cho nhân viên
     </button>
-    <br>
+    <br><br>
 
     <div class="staff-filter">
         <form action="">
             <div class="input-group mb-3">
                 <select class="form-select" aria-label="Default select example" name="storeId" onchange="this.form.submit()">
                     <option selected disabled>Chọn cửa hàng</option>
+                    <option value="all">Tất cả</option>
                     <option value="1">Cửa hàng 1</option>
                     <option value="2">Cửa hàng 2</option>
                     <option value="3">Cửa hàng 3</option>
                 </select>
             </div>
-            <button class="btn btn-success" type="submit">Lọc</button>
         </form>
 
     </div>
@@ -109,25 +114,53 @@
             </tr>
         </thead>
         <tbody>
-            <?php $index = 0; foreach($data as $i) { $index += 1; ?>
-            <tr>
-                <td><?php echo $index;?></td>
-                <td><?php echo $i["last_name"];?></td>
-                <td><?php echo $i["first_name"];?></td>
-                <td><?php echo $i["user_name"];?></td>
-                <td><?php echo $i["phone_number"];?></td>
-                <td><?php echo $i["date_of_birth"];?></td>
-                <td><?php echo number_format($i["salary"], 0, ".", ",");?></td>
-                <td>
-                    <button type="button" class="btn btn-warning">
-                        Sửa
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                        Xóa
-                    </button>
-                </td>
-            </tr>
+            <?php if (count($staffByStore) > 0):?>
+                <?php $index = 0; foreach ($staffByStore as $i) { 
+                    $index += 1; ?>
+                    <tr>
+                        <td><?php echo $index; ?></td>
+                        <td><?php echo $i["last_name"]; ?></td>
+                        <td><?php echo $i["first_name"]; ?></td>
+                        <td><?php echo $i["user_name"]; ?></td>
+                        <td><?php echo $i["phone_number"]; ?></td>
+                        <td><?php echo $i["date_of_birth"]; ?></td>
+                        <td><?php echo number_format($i["salary"], 0, ".", ","); ?></td>
+                        <td>
+                            <button type="button" class="btn btn-warning">
+                                Sửa
+                            </button>
+                            <button type="button" class="btn btn-danger">
+                                Xóa
+                            </button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            <?php endif; ?>
+
+            <?php if (count($staffByStore) <= 0): ?>
+                <?php $index = 0;
+                foreach (getAll() as $i) {
+                $index += 1; ?>
+                <tr>
+                    <td><?php echo $index; ?></td>
+                    <td><?php echo $i["last_name"]; ?></td>
+                    <td><?php echo $i["first_name"]; ?></td>
+                    <td><?php echo $i["user_name"]; ?></td>
+                    <td><?php echo $i["phone_number"]; ?></td>
+                    <td><?php echo $i["date_of_birth"]; ?></td>
+                    <td><?php echo number_format($i["salary"], 0, ".", ","); ?></td>
+                    <td>
+                        <button type="button" class="btn btn-warning">
+                            Sửa
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
             <?php } ?>
+            <?php endif; ?>
+            
         </tbody>
     </table>
 
