@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 <?php include "controllers/productController.php"; ?>
 
-<link rel="stylesheet" href="./public/manageProduct.css">
+<link rel="stylesheet" href="./public/css/manageProduct.css">
 <div class="container">
     <h1 style="text-align: center;">Tất cả sản phẩm</h1>
     <div class="filter-form" >
