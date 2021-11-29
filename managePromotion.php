@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="./public/managePromotion.css">
 <div class="container">
-    <h1 style="text-align: center;">Khuyến mãi</h1>
+    <h1 style="text-align: center;">DANH SÁCH KHUYẾN MÃI</h1>
     <div class="filter-form" >
         <h5>Bộ lọc theo giá trị khuyến mãi </h5>
         <form class="row g-3 needs-validation filterForm" action="managePromotion.php" method="post" novalidate >
@@ -26,7 +26,7 @@
             </div>
         </form>
     </div> 
-    <div id="filter-result" style="text-align: center;">
+    <div id="filter-result" style="font-weight: bold;">
         <?php 
             if (!isset($getPrice)){$getPrice = '';}
 
@@ -39,6 +39,7 @@
             }
         ?>
     </div>
+    <br/>
     
     <table class="table table-hover align-middle" id="promotion-table">
         <thead>
