@@ -1,15 +1,8 @@
 <?php
 include "./db/db.php";
 include "header.php";
-function console_log($d)
-{
-    echo '<script>';
-    echo 'console.log(' . json_encode($d) . ');';
-    echo '</script>';
-}
-function alert($d) {
-    echo "<script type='text/javascript'>alert('" . $d . "');</script>";
-}
+include 'helper.php';
+
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
     
@@ -23,14 +16,12 @@ if (isset($_GET["id"])) {
     }
     //console_log($data);
 }
-
-
 ?>
 
 <div class="container">
     <h5 style="text-align: center;">Cập nhật nhân viên</h5>
     <div class="modal-body">
-        <form action="" method="post" enctype="multipart/form-data" id="">
+        <form action="updateStaff.php" method="post" enctype="multipart/form-data" id="">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Họ và tên lót</span>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="last_name" value="<?php echo $data[0]['last_name']; ?>" required>
@@ -63,7 +54,7 @@ if (isset($_GET["id"])) {
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Ngày tháng năm sinh</span>
-                <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="dob" value="<?php echo $data[0]['date_of_birth']; ?>" required>
+                <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="dob" value="<?php $date = date_create($data[0]["date_of_birth"]); echo $date->format("Y-m-d"); ?>" required>
             </div>
 
             <div class="input-group mb-3">
@@ -72,7 +63,6 @@ if (isset($_GET["id"])) {
             </div>
 
             <div class="modal-footer modal-footer-custom">
-                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Đóng</button>
                 <button type="submit" class="btn btn-success" name="submit">Cập nhật</button>
             </div>
         </form>

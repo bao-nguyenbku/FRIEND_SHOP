@@ -1,16 +1,6 @@
 <?php
 include './db/db.php';
-function console_log($d)
-{
-    echo '<script>';
-    echo 'console.log(' . json_encode($d) . ');';
-    echo '</script>';
-}
-function alert($d)
-{
-    echo "<script type='text/javascript'>alert('" . $d . "');</script>";
-}
-
+require_once 'helper.php';
 $message = 'No Error';
 // ADD NEW STAFF
 if (isset($_POST["submit"])) {

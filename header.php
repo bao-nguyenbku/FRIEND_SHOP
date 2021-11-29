@@ -38,7 +38,7 @@ session_start();
                         <a class="nav-link active" aria-current="page" href="manageStaff.php">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manageCustomer.php">Quản lý khách hàng</a>
+                        <a class="nav-link" href="manageCustomer.php">Quản lý khuyến mãi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="manageStore.php">Quản lý chi nhánh</a>
@@ -66,11 +66,6 @@ session_start();
                         <a class="nav-link disabled">Disabled</a>
                     </li> -->
                 </ul>
-                <div class="d-flex account-area">
-                    <a href="#" class="btn btn-light">Đăng nhập</a>
-                    <a href="#" class="btn btn-primary">Đăng ký</a>
-
-                </div>
             </div>
         </div>
     </nav>

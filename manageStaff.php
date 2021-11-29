@@ -82,7 +82,8 @@ if (isset($_GET["storeId"])) {
                     <td><?php echo $i["first_name"]; ?></td>
                     <td><?php echo $i["user_name"]; ?></td>
                     <td><?php echo $i["phone_number"]; ?></td>
-                    <td><?php echo $i["date_of_birth"]; ?></td>
+                    <?php $date = date_create($i["date_of_birth"]) ?>
+                    <td><?php echo $date->format("m/d/Y"); ?></td>
                     <td><?php echo number_format($i["salary"], 0, ".", ","); ?></td>
                     <td>
                         <a class="btn btn-warning" href="getEditStaff.php?id=<?php echo $i['id']; ?>">
