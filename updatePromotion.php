@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="text-box mt-5 mb-5">
-                        <h2>Chỉnh sửa thông tin khuyến mãi</h2>
+                        <h2>Chỉnh Sửa Thông Tin Khuyến Mãi</h2> <br/>
                         
                         <?php $data=[];while ($row=mysqli_fetch_row($res)): ?>
                             

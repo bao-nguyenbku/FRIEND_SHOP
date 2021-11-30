@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="text-box mt-5 mb-5">
-                        <h2>Thêm sản phẩm</h2>
+                        <h2>Thêm Thông Tin Khuyến Mãi</h2> <br/>
                         
                         <form class="row g-3 needs-validation infoForm" action="addPromotion.php" method="post" novalidate >
                             
@@ -68,7 +68,7 @@
                                 <div class="col-sm-9">
                                     <input type="Datetime" class="form-control" name="start_date"  id="name" placeholder="" required value="">
                                     <div class="invalid-feedback">
-                                        Tên sản phẩm không hợp lệ!
+                                        Khuyến mãi không hợp lệ!
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <div class="col-sm-9">
                                     <input type="Datetime" class="form-control" name="end_date"  id="email" placeholder="" required  value="">
                                     <div class="invalid-feedback">
-                                        Loại sản phẩm không hợp lệ!
+                                        Khuyến mãi không hợp lệ!
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" name="sale_off"  id="name" placeholder="" required  value="">
                                     <div class="invalid-feedback">
-                                        Giá sản phẩm không hợp lệ!
+                                        Khuyến mãi không hợp lệ!
                                     </div>
                                 </div>
                             </div>
