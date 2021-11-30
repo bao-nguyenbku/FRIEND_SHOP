@@ -58,12 +58,8 @@
                 <td><?php echo $row["name"]; ?></td>
                 <td><?php echo $row["specs"]; ?></td>
                 <td><?php echo $row["category"]; ?></td>
-<<<<<<< HEAD
                 <td>
                     <?php echo number_format($row["price"], 0, "", ","); ?></td>
-=======
-                <td><?php echo  $row["price"]; ?></td>
->>>>>>> aabf1479e32fb402c0fac7ed1b1a075604923293
                 <td>
                     
                         <button type="button" class="btn btn-warning">

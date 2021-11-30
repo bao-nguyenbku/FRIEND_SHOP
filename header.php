@@ -38,7 +38,7 @@ session_start();
                         <a class="nav-link active" aria-current="page" href="manageStaff.php">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manageCustomer.php">Quản lý khuyến mãi</a>
+                        <a class="nav-link" href="managePromotion.php">Quản lý khuyến mãi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="manageStore.php">Quản lý chi nhánh</a>
