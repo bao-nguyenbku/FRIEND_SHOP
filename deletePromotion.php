@@ -13,6 +13,7 @@ $sql = "DELETE FROM `promotion` WHERE id='$id'";
 $res = mysqli_query($connect, $sql);
 if ($res){
     echo "<script type='text/javascript'>alert('Xóa sản phẩm thành công');</script>";
+    header('Location: managePromotion.php');
 } else {
     echo "<script type='text/javascript'>alert('Xóa sản phẩm thất bại');</script>";
 }

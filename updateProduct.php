@@ -26,7 +26,7 @@
         $query = "UPDATE `product` SET `price` = '$_POST[price]', `specs`='$_POST[specs]',  `name`='$_POST[name]', `category`='$_POST[category]' WHERE `id` = '$_POST[id]'";
         $result = mysqli_query($connect, $query);
         $name = $_POST['name'];
-        if ($result)
+        if ($result && $_POST['price'] > 0 && $_POST['price'] < 100000000)
         {
             echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công $name');</script>";
         } else {
@@ -44,7 +44,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multilevel Company</title>
+    <title>FRIEND SHOP</title>
     <link rel="stylesheet" href="./public/css/product.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
