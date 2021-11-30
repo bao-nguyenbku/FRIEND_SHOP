@@ -57,7 +57,7 @@ if (isset($_POST["submit"])) {
 <div class="container">
     <h5 style="text-align: center;">Thêm nhân viên</h5>
     <div class="modal-body">
-        <form action="" method="post" enctype="multipart/form-data" id="">
+        <form action="" method="post">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Họ và tên lót</span>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="last_name" required>
