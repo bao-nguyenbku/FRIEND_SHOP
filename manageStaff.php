@@ -60,7 +60,7 @@ if (isset($_GET["storeId"])) {
                         <td><?php echo $i["phone_number"]; ?></td>
                         <td><?php echo $i["date_of_birth"]; ?></td>
                         <td><?php echo number_format($i["salary"], 0, ".", ","); ?></td>
-                        <td>
+                        <td style="width: max-content;">
                             <a class="btn btn-warning" href="getEditStaff.php?id=<?php echo $i['id']; ?>">Sửa</a>
                             <button type="button" class="btn btn-danger">
                                 Xóa

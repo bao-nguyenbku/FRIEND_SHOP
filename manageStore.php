@@ -1,20 +1,20 @@
 <?php include "header.php"; ?>
 <?php include "controllers/storeController.php"; ?>
 
-<link rel="stylesheet" href="./public/manageStore.css">
+<link rel="stylesheet" href="./public/css/manageStore.css">
 <div class="container">
     <h1 style="text-align: center;">DANH SÁCH CHI NHÁNH</h1>
     <div class="filter-form" >
         <h5>Bộ lọc theo nhân viên và doanh thu tối thiểu</h5>
         <form class="row g-3 needs-validation filterForm" action="manageStore.php" method="post" novalidate >
             <div class="mb-4 row" style="margin-bottom: 0">
-                <label class="form-label col-sm-2 " for="name">Nhân viên</label>
+                <label class="form-label col-sm-2" style="width: max-content;" for="name">Nhân viên</label>
                 <div class="col-sm-6">
                     <input type="number" class="form-control" name="filterStaff" id="username" placeholder="" required value="" >
                 </div>
             </div>
             <div class="mb-4 row" style="margin-bottom: 0">
-                <label class="form-label col-sm-2 " for="name">Doanh thu tối thiểu</label>
+                <label class="form-label col-sm-2" style="width: max-content;" for="name">Doanh thu tối thiểu</label>
                 <div class="col-sm-6">
                     <input type="number" class="form-control" name="filterIncome" id="username" placeholder="" required value="" >
                 </div>
@@ -53,7 +53,7 @@
                         Sửa
                     </button>
                     </form>
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger" style="margin-left: 10px;">
                         <a href="./deleteStore.php?rn=<?php echo $row[0]; ?>" class="link-primary link-product" >
                             Xóa
                         </a>

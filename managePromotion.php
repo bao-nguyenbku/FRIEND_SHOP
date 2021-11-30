@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 <?php include "controllers/promotionController.php"; ?>
 
-<link rel="stylesheet" href="./public/managePromotion.css">
+<link rel="stylesheet" href="./public/css/managePromotion.css">
 <div class="container">
     <h1 style="text-align: center;">DANH SÁCH KHUYẾN MÃI</h1>
     <div class="filter-form" >

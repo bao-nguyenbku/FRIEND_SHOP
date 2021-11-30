@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 <?php include "controllers/ordersController.php"; ?>
 
-<link rel="stylesheet" href="./public/manageOrders.css">
+<link rel="stylesheet" href="./public/css/manageOrders.css">
 <div class="container"> 
     <h1 style="text-align: center;">Tất cả đơn hàng</h1>
     <div class="filter-form" >
