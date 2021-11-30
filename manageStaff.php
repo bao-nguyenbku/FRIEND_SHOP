@@ -13,7 +13,7 @@ if (isset($_GET["storeId"])) {
 
 <link rel="stylesheet" href="./public/css/staff.css">
 <div class="container">
-    <h1 style="text-align: center;">Danh sách nhân viên</h1>
+    <h1 style="text-align: center;">DANH SÁCH NHÂN VIÊN</h1>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary">
         <a href="addStaff.php" style="color: #fff;">Thêm tài khoản cho nhân viên</a>

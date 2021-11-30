@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="./public/css/manageProduct.css">
 <div class="container">
-    <h1 style="text-align: center;">Tất cả sản phẩm</h1>
+    <h1 style="text-align: center;">DANH SÁCH SẢN PHẨM</h1>
     <div class="filter-form" >
         <h5>Bộ lọc theo cửa hàng và loại sản phẩm</h5>
         <form class="row g-3 needs-validation filterForm" action="manageProduct.php" method="post" novalidate >

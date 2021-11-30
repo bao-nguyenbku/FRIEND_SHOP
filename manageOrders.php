@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="./public/css/manageOrders.css">
 <div class="container"> 
-    <h1 style="text-align: center;">Tất cả đơn hàng</h1>
+    <h1 style="text-align: center;">DANH SÁCH ĐƠN HÀNG</h1>
     <div class="filter-form" >
         <h5>Bộ lọc đơn hàng theo nhân viên</h5>
         <form class="row g-3 needs-validation filterForm" action="manageOrders.php" method="post" novalidate >
