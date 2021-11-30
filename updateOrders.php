@@ -33,6 +33,7 @@
             echo "<script type='text/javascript'>alert('Chỉnh sửa đơn hàng thứ $id thất bại');</script>";
         }
         $connect->close();
+        
     }
 ?>
 
