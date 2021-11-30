@@ -58,9 +58,10 @@
                 <td><?php echo $row["name"]; ?></td>
                 <td><?php echo $row["specs"]; ?></td>
                 <td><?php echo $row["category"]; ?></td>
+
                 <td>
                     <?php echo number_format($row["price"], 0, "", ","); ?></td>
-                <td>
+
                     
                         <button type="button" class="btn btn-warning">
                             <a href="./updateProduct.php" onclick="testSth(this)" class="link-primary link-product" id="<?php echo $row[0]; ?>">
