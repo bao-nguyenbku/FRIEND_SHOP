@@ -5,7 +5,7 @@
 <div class="container">
     <h1 style="text-align: center;">DANH SÁCH KHUYẾN MÃI</h1>
     <div class="filter-form" >
-        <h5>Bộ lọc theo giá trị khuyến mãi </h5>
+        <h5>Bộ lọc theo giá trị của đơn hàng </h5>
         <form class="row g-3 needs-validation filterForm" action="managePromotion.php" method="post" novalidate >
             
             <div class="mb-4 row" style="margin-bottom: 0">
