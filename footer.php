@@ -11,6 +11,14 @@
         });
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#promotion-table').DataTable({
+            responsive: true
+        });
+    });
+</script>
 <script>
         
         function testSth(ele)
