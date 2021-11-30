@@ -1,39 +1,44 @@
+<!-- ADD ROW -->
 <?php
-    session_start();
-    $connect = new mysqli('localhost', 'root','','friend_shop');
-    if(mysqli_connect_errno()) {
-        die ("Database Connection Failed, ".$mysql_connect_error()." (". $mysql_connect_errno()." )");
-    }
-    $ck = $_COOKIE['cname'];
-    $sql = 'select * from product';
-    $res = mysqli_query($connect, $sql);
-    if($res === false ) {
-        echo $ck;}
-    $connect->close();
-?>
-<!-- UPDATE TABLE -->
-<?php
-    if (isset($_POST['update']))
+    if (isset($_POST['add']))
     {
 
         $connect = new mysqli('localhost', 'root','','friend_shop');
         if(mysqli_connect_errno()) {
             die ("Database Connection Failed, ".$mysql_connect_error()." (". $mysql_connect_errno()." )");
         }
-       
 
-        // $query = "UPDATE `members` SET `name`='$_POST[name]', `email`='$_POST[mail]',`password`='$_POST[password]', `dob`='$_POST[dob]' ,`gender`='$_POST[gender]',`phone`='$_POST[phone]',`avatar`='$_POST[avatar]' WHERE `username` = $_POST[username]";
-        $query = "UPDATE `product` SET `price` = '$_POST[price]', `specs`='$_POST[specs]',  `name`='$_POST[name]', `category`='$_POST[category]' WHERE `id` = '$_POST[id]'";
-        $result = mysqli_query($connect, $query);
+        $id = $_POST['id'];
+        $price = $_POST['price'];
+        $specs = $_POST['specs'];
         $name = $_POST['name'];
+        $category = $_POST['category'];
+      
+        // $sql = "INSERT INTO `product`(`id`, `price`, `specs`, `name`, `category`) VALUES ('$id','$price','$specs','$name','$category')";
+        $sql2 = "CALL insertProduct('".$_POST['id']."', '".$_POST['price']."','".$_POST['specs']."','".$_POST['name']."','".$_POST['category']."' )";
+        
+        $result = mysqli_query($connect, $sql2);
+
         if ($result)
         {
-            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công $name');</script>";
+            echo "<script type='text/javascript'>alert('Đã thêm thành công $name');</script>";
         } else {
-            echo "<script type='text/javascript'>alert('Chỉnh sửa $name thất bại');</script>";
+            // echo "<script type='text/javascript'>alert('Thêm $name không thành công');</script>";
+           if (mysqli_errno($connect) == 1062)
+           {
+                echo "<script type='text/javascript'>alert('ID sản phẩm đã tồn tại');</script>";;
+           }
+           else  if (($connect->sqlstate) == 50001)
+           {
+               echo "<script type='text/javascript'>alert('Giá sản phẩm phải lớn hơn 0 và bé hơn 100 000 000');</script>";
+               
+           }
+           else 
+           {
+               echo "<script type='text/javascript'>alert('Thêm $name không thành công');</script>";
+           }
         }
         $connect->close();
-
     }
 ?>
 
@@ -57,25 +62,13 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="text-box mt-5 mb-5">
-                        <h2>Chỉnh sửa thông tin sản phẩm</h2>
+                        <h2>Thêm sản phẩm</h2>
                         
-                        <?php $data=[];while ($row=mysqli_fetch_row($res)): ?>
-                            
-                        <?php if (htmlspecialchars($row[0]) === $ck):?>
-                            <?php $data['id'] = htmlspecialchars($row[0]) ?>
-                            <?php $data['price']  = htmlspecialchars($row[1]) ?>
-                            <?php $data['specs'] = htmlspecialchars($row[2]) ?>
-                            <?php $data['name'] = htmlspecialchars($row[3]) ?>
-                            <?php $data['category'] = htmlspecialchars($row[4]) ?>
-                         
-        
-                        <?php endif;?>
-                        <?php endwhile; ?>
-                        <form class="row g-3 needs-validation infoForm" action="updateProduct.php" method="post" novalidate >
+                        <form class="row g-3 needs-validation infoForm" action="addProduct.php" method="post" novalidate >
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="name">ID</label>
                                 <div class="col-sm-9">
-                                    <input type="text" readonly class="form-control" name="id" id="username" placeholder="" required value="<?php echo $data['id'] ?> ">
+                                    <input type="text" class="form-control" name="id" id="username" placeholder="" required value="">
                                     <div class="invalid-feedback">
                                         ID không hợp lệ!
                                     </div>
@@ -84,7 +77,7 @@
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="name">Tên sản phẩm</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="name"  id="name" placeholder="" required value="<?php echo $data['name'] ?>">
+                                    <input type="text" class="form-control" name="name"  id="name" placeholder="" required value="">
                                     <div class="invalid-feedback">
                                         Tên sản phẩm không hợp lệ!
                                     </div>
@@ -93,7 +86,7 @@
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="phone">Loại</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="category"  id="email" placeholder="" required  value="<?php echo $data['category'] ?>">
+                                    <input type="text" class="form-control" name="category"  id="email" placeholder="" required  value="">
                                     <div class="invalid-feedback">
                                         Loại sản phẩm không hợp lệ!
                                     </div>
@@ -102,7 +95,7 @@
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="name">Giá sản phẩm</label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="price"  id="name" placeholder="" required  value="<?php echo $data['price'] ?>">
+                                    <input type="number" class="form-control" name="price"  id="name" placeholder="" required  value="">
                                     <div class="invalid-feedback">
                                         Giá sản phẩm không hợp lệ!
                                     </div>
@@ -113,19 +106,20 @@
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="phone">Mô tả</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="specs"  id="phone" placeholder="" required  value="<?php echo $data['specs'] ?>">
+                                    <input type="text" class="form-control" name="specs"  id="phone" placeholder="" required  value="">
                                     <div class="invalid-feedback">
                                         Mô tả không hợp lệ!
                                     </div>
                                 </div>
                             </div>
-                                  
+                            
+                           
                             
                             
                             
                             <div class="mb-3 d-grid gap-2">
-                                <button class="btn btn-outline-danger" type="submit" id="signup"  name="update">Xác nhận</button>
-                                <a class="btn btn-outline-danger" href="manageProduct.php" type="submit" id="signup"  name="update">Trở về</a>
+                                <button class="btn btn-outline-danger" type="submit" id="signup"  name="add">Xác nhận</button>
+                                <a class="btn btn-outline-danger" href="manageProduct.php" type="submit" id="signup" >Trở về</a>
                             </div>
                         </form>
                         
