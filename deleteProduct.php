@@ -13,6 +13,7 @@ $sql = "DELETE FROM `product` WHERE id='$id'";
 $res = mysqli_query($connect, $sql);
 if ($res){
     echo "<script type='text/javascript'>alert('Xóa sản phẩm $id thành công');</script>";
+    header('Location: manageProduct.php');
 } else {
     echo "<script type='text/javascript'>alert('Xóa sản phẩm $id thất bại');</script>";
 }
