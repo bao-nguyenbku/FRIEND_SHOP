@@ -1,9 +1,9 @@
 <?php include "header.php"; ?>
 <?php include "controllers/storeController.php"; ?>
 
-<link rel="stylesheet" href="./public/manageProduct.css">
+<link rel="stylesheet" href="./public/manageStore.css">
 <div class="container">
-    <h1 style="text-align: center;">Tất cả chi nhánh</h1>
+    <h1 style="text-align: center;">DANH SÁCH CHI NHÁNH</h1>
     <div class="filter-form" >
         <h5>Bộ lọc theo nhân viên và doanh thu tối thiểu</h5>
         <form class="row g-3 needs-validation filterForm" action="manageStore.php" method="post" novalidate >
@@ -16,7 +16,7 @@
             <div class="mb-4 row" style="margin-bottom: 0">
                 <label class="form-label col-sm-2 " for="name">Doanh thu tối thiểu</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="filterIncome" id="username" placeholder="" required value="" >
+                    <input type="number" class="form-control" name="filterIncome" id="username" placeholder="" required value="" >
                 </div>
             </div>
             <div class="mb-3 d-grid gap-2">
@@ -25,16 +25,7 @@
         </form>
     </div>
     <div id="filter-result" style="text-align: center;">
-        <?php 
-            if (!isset($getCate)){$getCate= '';}
-
-            if ($getCate != '' && $getStore !='') 
-            {
-                echo "Danh sách <b> $getCate </b> cửa hàng <b> $getStore </b>";
-            }
-            else {
-                echo '';
-            }
+        <?php
         ?>
     </div>
     
