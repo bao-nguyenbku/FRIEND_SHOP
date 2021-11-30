@@ -7,12 +7,12 @@ if (isset($_POST["submit"])) {
     $pattern_phone = "/(84|0[3|5|7|8|9])+([0-9]{8})\b/";
     $pattern_mail = "|^[A-Z0-9._%+-]+@gmail\.com$|i";
 
-    $check_phone = (preg_match($pattern_phone, $_POST["phone"]) && count($_POST["phone"]) == 10);
+    $check_phone = preg_match($pattern_phone, $_POST["phone"]);
     $check_mail = preg_match($pattern_mail, $_POST["email"]);
     $dob_tmp = date_create($_POST["dob"]);
     $check_age = ($dob_tmp->format("Y") <= '2003');
 
-    if ($check_phone && $check_mail && $check_age) {
+    if ($check_phone && $check_mail && $check_age && (strlen($_POST["phone"]) == 10)) {
         $phone = $_POST["phone"];
         $last_name = $_POST["last_name"];
         $first_name = $_POST["first_name"];
@@ -85,7 +85,7 @@ if (isset($_POST["submit"])) {
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Số điện thoại</span>
-                <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="phone" required>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="phone" required>
             </div>
 
             <div class="input-group mb-3">
