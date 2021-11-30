@@ -33,6 +33,7 @@
             echo "<script type='text/javascript'>alert('Chỉnh sửa $name thất bại');</script>";
         }
         $connect->close();
+        
     }
 ?>
 
