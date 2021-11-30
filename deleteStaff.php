@@ -5,6 +5,9 @@
     if (isset($_POST["id"])) {
         $id = $_POST["id"];
         $sql = "DELETE FROM accounts WHERE id = " .$id. "";
-        $db->query($sql);
+        $res = $db->query($sql);
+        if ($res) {
+            header("Location: url.php");
+        }
     }
 ?>
