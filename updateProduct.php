@@ -5,7 +5,7 @@
         die ("Database Connection Failed, ".$mysql_connect_error()." (". $mysql_connect_errno()." )");
     }
     $ck = $_COOKIE['cname'];
-    $sql = 'select * from orders';
+    $sql = 'select * from product';
     $res = mysqli_query($connect, $sql);
     if($res === false ) {
         echo $ck;}
@@ -23,14 +23,14 @@
        
 
         // $query = "UPDATE `members` SET `name`='$_POST[name]', `email`='$_POST[mail]',`password`='$_POST[password]', `dob`='$_POST[dob]' ,`gender`='$_POST[gender]',`phone`='$_POST[phone]',`avatar`='$_POST[avatar]' WHERE `username` = $_POST[username]";
-        $query = "UPDATE `Orders` SET `status` = '$_POST[status]', `payment_type`='$_POST[payment_type]',  `create_date`='$_POST[create_date]', `cost`='$_POST[cost]' WHERE `id` = '$_POST[id]'";
+        $query = "UPDATE `product` SET `price` = '$_POST[price]', `specs`='$_POST[specs]',  `name`='$_POST[name]', `category`='$_POST[category]' WHERE `id` = '$_POST[id]'";
         $result = mysqli_query($connect, $query);
-        $id = $_POST['id'];
+        $name = $_POST['name'];
         if ($result)
         {
-            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công đơn hàng thứ $id');</script>";
+            echo "<script type='text/javascript'>alert('Đã chỉnh sửa thành công $name');</script>";
         } else {
-            echo "<script type='text/javascript'>alert('Chỉnh sửa đơn hàng thứ $id thất bại');</script>";
+            echo "<script type='text/javascript'>alert('Chỉnh sửa $name thất bại');</script>";
         }
         $connect->close();
         
@@ -57,21 +57,21 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="text-box mt-5 mb-5">
-                        <h2>Chỉnh sửa thông tin đơn hàng</h2>
+                        <h2>Chỉnh sửa thông tin sản phẩm</h2>
                         
                         <?php $data=[];while ($row=mysqli_fetch_row($res)): ?>
                             
                         <?php if (htmlspecialchars($row[0]) === $ck):?>
                             <?php $data['id'] = htmlspecialchars($row[0]) ?>
-                            <?php $data['status']  = htmlspecialchars($row[1]) ?>
-                            <?php $data['payment_type'] = htmlspecialchars($row[2]) ?>
-                            <?php $data['create_date'] = htmlspecialchars($row[3]) ?>
-                            <?php $data['cost'] = htmlspecialchars($row[4]) ?>
+                            <?php $data['price']  = htmlspecialchars($row[1]) ?>
+                            <?php $data['specs'] = htmlspecialchars($row[2]) ?>
+                            <?php $data['name'] = htmlspecialchars($row[3]) ?>
+                            <?php $data['category'] = htmlspecialchars($row[4]) ?>
                          
         
                         <?php endif;?>
                         <?php endwhile; ?>
-                        <form class="row g-3 needs-validation infoForm" action="updateOrders.php" method="post" novalidate >
+                        <form class="row g-3 needs-validation infoForm" action="updateProduct.php" method="post" novalidate >
                             <div class="mb-4 row ">
                                 <label class="form-label col-sm-3" for="name">ID</label>
                                 <div class="col-sm-9">
@@ -82,27 +82,27 @@
                                 </div>
                             </div>
                             <div class="mb-4 row ">
-                                <label class="form-label col-sm-3" for="name">Trạng thái</label>
+                                <label class="form-label col-sm-3" for="name">Tên sản phẩm</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="status"  id="name" placeholder="" required value="<?php echo $data['status'] ?>">
+                                    <input type="text" class="form-control" name="name"  id="name" placeholder="" required value="<?php echo $data['name'] ?>">
                                     <div class="invalid-feedback">
-                                        Trạng thái không hợp lệ!
+                                        Tên sản phẩm không hợp lệ!
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-4 row ">
-                                <label class="form-label col-sm-3" for="phone">Phương thức thanh toán</label>
+                                <label class="form-label col-sm-3" for="phone">Loại</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="payment_type"  id="email" placeholder="" required  value="<?php echo $data['payment_type'] ?>">
+                                    <input type="text" class="form-control" name="category"  id="email" placeholder="" required  value="<?php echo $data['category'] ?>">
                                     <div class="invalid-feedback">
                                         Loại sản phẩm không hợp lệ!
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-4 row ">
-                                <label class="form-label col-sm-3" for="name">Ngày tạo đơn hàng</label>
+                                <label class="form-label col-sm-3" for="name">Giá sản phẩm</label>
                                 <div class="col-sm-9">
-                                    <input type="Datetime" class="form-control" name="create_date"  id="name" placeholder="" required  value="<?php echo $data['create_date'] ?>">
+                                    <input type="number" class="form-control" name="price"  id="name" placeholder="" required  value="<?php echo $data['price'] ?>">
                                     <div class="invalid-feedback">
                                         Giá sản phẩm không hợp lệ!
                                     </div>
@@ -111,9 +111,9 @@
                            
                            
                             <div class="mb-4 row ">
-                                <label class="form-label col-sm-3" for="phone">Giá đơn hàng</label>
+                                <label class="form-label col-sm-3" for="phone">Mô tả</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="cost"  id="phone" placeholder="" required  value="<?php echo $data['cost'] ?>">
+                                    <input type="text" class="form-control" name="specs"  id="phone" placeholder="" required  value="<?php echo $data['specs'] ?>">
                                     <div class="invalid-feedback">
                                         Mô tả không hợp lệ!
                                     </div>
@@ -125,7 +125,7 @@
                             
                             <div class="mb-3 d-grid gap-2">
                                 <button class="btn btn-outline-danger" type="submit" id="signup"  name="update">Xác nhận</button>
-                                <a class="btn btn-outline-danger" href="manageOrders.php" type="submit" id="signup"  name="update">Trở về</a>
+                                <a class="btn btn-outline-danger" href="manageProduct.php" type="submit" id="signup"  name="update">Trở về</a>
                             </div>
                         </form>
                         

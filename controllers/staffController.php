@@ -27,7 +27,7 @@
             return $res;
         }
         else {
-            return mysqli_error($db);
+            return array(mysqli_error($db));
         }
     }
 ?>
