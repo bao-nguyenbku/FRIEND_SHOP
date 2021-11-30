@@ -7,7 +7,10 @@
         $sql = "DELETE FROM accounts WHERE id = " .$id. "";
         $res = $db->query($sql);
         if ($res) {
-            header("Location: url.php");
+            echo json_encode(200);
+        }
+        else {
+            echo json_encode(mysqli_error($db));
         }
     }
 ?>

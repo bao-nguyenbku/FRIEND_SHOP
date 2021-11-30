@@ -4,8 +4,15 @@ require_once 'helper.php';
 $message = 'No Error';
 // ADD NEW STAFF
 if (isset($_POST["submit"])) {
-    $pattern = "/(84|0[3|5|7|8|9])+([0-9]{8})\b/";
-    if (preg_match($pattern, $_POST["phone"])) {
+    $pattern_phone = "/(84|0[3|5|7|8|9])+([0-9]{8})\b/";
+    $pattern_mail = "|^[A-Z0-9._%+-]+@gmail\.com$|i";
+
+    $check_phone = preg_match($pattern_phone, $_POST["phone"]);
+    $check_mail = preg_match($pattern_mail, $_POST["email"]);
+    $dob_tmp = date_create($_POST["dob"]);
+    $check_age = ($dob_tmp->format("Y") <= '2003');
+
+    if ($check_phone && $check_mail && $check_age) {
         $phone = $_POST["phone"];
         $last_name = $_POST["last_name"];
         $first_name = $_POST["first_name"];
@@ -26,14 +33,21 @@ if (isset($_POST["submit"])) {
                 header("Location: manageStaff.php");
             }
         } 
-        
         else {
             alert(mysqli_error($db));
         }
     } 
     
     else {
-        alert('PHONE NUMBER IS INVALID');
+        if (!$check_phone) {
+            alert('PHONE NUMBER IS INVALID');
+        }
+        if (!$check_mail) {
+            alert('EMAIL IS INVALID');
+        }
+        if (!$check_age) {
+            alert("STAFF MUST BE 18 YEARS OLD OR HIGHER");
+        }
     }
 }
 

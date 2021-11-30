@@ -62,9 +62,7 @@ if (isset($_GET["storeId"])) {
                         <td><?php echo number_format($i["salary"], 0, ".", ","); ?></td>
                         <td style="width: max-content;">
                             <a class="btn btn-warning" href="getEditStaff.php?id=<?php echo $i['id']; ?>">Sửa</a>
-                            <button type="button" class="btn btn-danger">
-                                Xóa
-                            </button>
+                            <button type="button" class="btn btn-danger delete-staff-btn" data-id="<?php echo $i['id']; ?>">Xóa</button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -107,7 +105,12 @@ if (isset($_GET["storeId"])) {
                     data: { id: id },
                     dataType: 'json',
                     success: function(res) {
-                        console.log(res);
+                        if (res == 200) {
+                            window.location.reload();
+                        }
+                        else {
+                            alert(res);
+                        }
                     }
                 });
             }
