@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     $pattern_phone = "/(84|0[3|5|7|8|9])+([0-9]{8})\b/";
     $pattern_mail = "|^[A-Z0-9._%+-]+@gmail\.com$|i";
 
-    $check_phone = preg_match($pattern_phone, $_POST["phone"]);
+    $check_phone = (preg_match($pattern_phone, $_POST["phone"]) && count($_POST["phone"]) == 10);
     $check_mail = preg_match($pattern_mail, $_POST["email"]);
     $dob_tmp = date_create($_POST["dob"]);
     $check_age = ($dob_tmp->format("Y") <= '2003');
@@ -109,7 +109,7 @@ if (isset($_POST["submit"])) {
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="hours" required>
             </div>
             <div class="modal-footer modal-footer-custom">
-                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Đóng</button>
+                <a href="./manageStaff.php" type="button" class="btn btn-secondary"><- Trở về</a>
                 <button type="submit" class="btn btn-success" name="submit">Thêm mới</button>
             </div>
         </form>

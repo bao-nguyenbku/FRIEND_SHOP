@@ -63,6 +63,7 @@ if (isset($_GET["id"])) {
             </div>
 
             <div class="modal-footer modal-footer-custom">
+                <a href="./manageStaff.php" class="btn btn-secondary"><- Trở về</a>
                 <button type="submit" class="btn btn-success" name="submit">Cập nhật</button>
             </div>
         </form>
