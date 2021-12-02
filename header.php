@@ -31,7 +31,7 @@ session_start();
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -54,4 +54,19 @@ session_start();
         </div>
     </nav>
     <script src="./public/js/jquery-3.6.0.min.js"></script>
-    <script src="./public/js/header.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#navbarSupportedContent .navbar-nav .nav-item').click(function() {
+                localStorage.setItem('lastTab', $(this).children().attr('href'));
+            });
+            var lastTab = localStorage.getItem('lastTab');
+
+            if (lastTab) {
+                $('#navbarSupportedContent .navbar-nav .nav-item').each(function() {
+                    if ($(this).children().attr('href') == lastTab) {
+                        $(this).addClass('tab-active');
+                    }
+                });
+            }
+        });
+    </script>
