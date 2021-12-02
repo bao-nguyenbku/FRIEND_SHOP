@@ -1,12 +1,15 @@
 <?php include "header.php"; ?>
+<?php include 'helper.php'; ?>
 <?php include "controllers/staffController.php"; ?>
 <?php
 
 $staffByStore = [];
+$listStore = listStore();
 if (isset($_GET["storeId"])) {
     $storeId = $_GET['storeId'];
     if ($storeId != 'all') {
         $staffByStore = listStaffByStore($storeId);
+        
     }
 }
 ?>
@@ -26,13 +29,12 @@ if (isset($_GET["storeId"])) {
                 <select class="form-select" aria-label="Default select example" name="storeId" onchange="this.form.submit()">
                     <option selected disabled>Chọn cửa hàng</option>
                     <option value="all">Tất cả</option>
-                    <option value="1">Cửa hàng 1</option>
-                    <option value="2">Cửa hàng 2</option>
-                    <option value="3">Cửa hàng 3</option>
+                    <?php foreach($listStore as $store) { ?>
+                        <option value="<?php echo $store['id']; ?>">Cửa hàng <?php echo $store['id']; ?></option>
+                        <?php }?>
                 </select>
             </div>
         </form>
-
     </div>
     
     <table class="table table-hover align-middle" id="product-table">
