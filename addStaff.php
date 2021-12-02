@@ -1,6 +1,7 @@
 <?php
 include './db/db.php';
 require_once 'helper.php';
+include 'controllers/staffController.php';
 $message = 'No Error';
 // ADD NEW STAFF
 if (isset($_POST["submit"])) {
@@ -95,9 +96,9 @@ if (isset($_POST["submit"])) {
             <div class="input-group mb-3">
                 <select class="form-select" aria-label="Default select example" name="storeId" required>
                 <option value="blank">Nơi làm việc</option>
-                    <option value="1">Cửa hàng 1</option>
-                    <option value="2">Cửa hàng 2</option>
-                    <option value="3">Cửa hàng 3</option>
+                <?php  foreach(listStore() as $i) {?>
+                    <option value="<?php echo $i['id']; ?>">Cửa hàng <?php echo $i['id']; ?></option>
+                <?php } ?>
                 </select>
             </div>
             <div class="input-group mb-3">

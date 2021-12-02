@@ -30,4 +30,19 @@
             return array(mysqli_error($db));
         }
     }
+    function listStore() {
+        global $db;
+        $sql = "SELECT id FROM store";
+        $res = $db->query($sql);
+        if ($res) {
+            $data = [];
+            while ($row = mysqli_fetch_array($res)) {
+                array_push($data, $row);
+            }
+            return $data;
+        }
+        else {
+            return array(mysqli_error($db));
+        }
+    }
 ?>
